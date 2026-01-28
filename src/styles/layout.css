@@ -1,0 +1,123 @@
+/*--------------------COMEÇO DO CONTAINER DA PESQUISA--------------------*/
+.header-container{
+    background-color: #004D8E ;
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+.div-logo-kabum{
+    flex-basis: 150px;
+    align-items: center;
+}
+#logo-kabum{
+    width: 130px;
+    margin-left: 20px;
+}
+header form{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    flex-grow: 2;
+}
+
+
+/*--------------------Todas as imagens do header--------------------*/
+header section img {
+    width: 20px;
+}
+
+/*--------------------Grid row up--------------------*/
+.grid-row-up{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    color: white;
+    height: 55px;
+}
+
+.grid-row-up > div{
+    display: flex;
+    align-items: center;
+}
+
+
+/*--------------------Grid row down--------------------*/
+.grid-row-down{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 20px;
+}
+.grid-row-down > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+/*--------------------FIM DO CONTAINER DA PESQUISA--------------------*/
+
+/*--------------------Vitrine dos banners------------------*/
+.vitrine-banners{
+    max-width: 1570px;
+    position: relative;
+    margin: 0px auto;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+/*-------------------- Artigo Central --------------------*/
+.artigo-central{
+    max-width: 1570px;
+    margin: 0px auto;
+    margin-top: -5px;
+}
+#feliz-level-novo{
+    height: 70px;
+    background-color: #F17A28;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    align-items: center;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/*----------------------- Vitrine dos produtos -----------------------*/
+
+.vitrine-produtos{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 80px;
+    background-color: rgb(238, 238, 238);
+}
+.produtos-grid {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 277px;
+    gap: 7px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;   /* Firefox */
+    -ms-overflow-style: none;   /* Edge antigo / IE */
+}
+.produtos-grid::-webkit-scrollbar {
+    display: none;              /* Chrome, Edge, Safari */
+}
+
+.banners-retangulares{
+    display: flex;
+    padding: 25px;
+    gap: 20px;
+    justify-content: space-between;
+    background-color: rgb(238, 238, 238);
+    width: 100%;
+}
+.banners-retangulares img {
+    width: 100%;
+}
+
+
