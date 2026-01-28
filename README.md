@@ -1,8 +1,9 @@
-# Mini KaBuM 🛒
+#E-commerce de placas de vídeo
 
 Projeto front-end de um mini e-commerce inspirado no KaBuM, desenvolvido com foco em arquitetura, organização de código e boas práticas.
 
 Funcionalidades
+- Terá pagina home onde será o primeiro contato do cliente com interface.
 - Listagem de produtos
 - Busca por nome
 - Carrinho de compras
