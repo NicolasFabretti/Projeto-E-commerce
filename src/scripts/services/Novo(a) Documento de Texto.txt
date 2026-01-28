@@ -1,0 +1,7 @@
+Descrição:
+Criar cartService.js
+
+Implementar adicionar/remover itens
+Calcular total do carrinho
+Critérios de aceiteItens persistem no localStorage
+Total é atualizado corretamente.
