@@ -1,4 +1,62 @@
-/*********  Função para pegar hora + contagem regressiva *********/
+/*--------------------------- carrossel dos banners --------------------------- */
+const carrosselBanners = document.querySelector('.allBanners');
+const bannersImg = document.querySelectorAll('.allBanners img');
+const backgroundImg = document.body;
+const botaoDireita = document.querySelector('#botao-direita');
+const botaoEsquerda = document.querySelector('#botao-esquerda');
+
+let indexAtual = 0;
+const totalBanners = bannersImg.length;
+
+
+function atualizarSlide() {
+  carrosselBanners.style.transform =
+    `translateX(-${indexAtual * 100}%)`;
+
+  const bannerAtual = bannersImg[indexAtual];
+  const cor = bannerAtual.dataset.bg;
+
+  if (cor) {
+    document.body.style.backgroundColor = cor;
+  }
+}
+
+function next() {
+  indexAtual = (indexAtual + 1) % totalBanners;
+  atualizarSlide();
+}
+
+function prev() {
+  indexAtual =
+    (indexAtual - 1 + totalBanners) % totalBanners;
+  atualizarSlide();
+}
+
+let intervalo;
+
+function iniciarAutoPlay() {
+  intervalo = setInterval(next, 5000);
+}
+
+function resetarAutoPlay() {
+  clearInterval(intervalo);
+  iniciarAutoPlay();
+}
+
+botaoDireita.addEventListener('click', () => {
+  next();
+  resetarAutoPlay();
+});
+
+botaoEsquerda.addEventListener('click', () => {
+  prev();
+  resetarAutoPlay();
+});
+
+atualizarSlide();|
+iniciarAutoPlay();
+
+/*-------------------  Função para pegar hora + contagem regressiva ------------------- */
 function iniciarRelogio() {
   const hora = document.querySelector('#hora');
   if (!hora) return;
@@ -26,14 +84,9 @@ function iniciarRelogio() {
 
 iniciarRelogio();
 
-/*--------------------------- botao da vitrine dos banners --------------------------- */
-const divBanners = document.querySelector('.vitrine-banners')
-const btnPrev1 = document.querySelector('#botao-esquerda');
-const btnNext1 = document.querySelector('#botao-direita');
 
 
-
-/*--------------------------- botao da vitrine dos produtos --------------------------- */
+/*--------------------------- carrossel dos produtos --------------------------- */
 const grid = document.querySelector('.produtos-grid');
 const btnPrev2 = document.querySelector('#btn-prev');
 const btnNext2 = document.querySelector('#btn-next');
@@ -54,53 +107,3 @@ btnNext2.addEventListener('click', () => {
     });
 });
 
-
-/*---------------------------vitrine dos banners --------------------------- */
-import { bannersLista } from "../data/banners.js";
-
-const bannerImg = document.querySelector("#banner-inicial"); //selecionando o banner no HTML
-const body = document.body; //selecionando a cor do body
-
-//variaveis de controle
-let indexAtual = 0; //0 → primeiro banner da lista, guarda qual banner está ativo.
-let emTransicao = false; //Evita que o banner mude no meio da animação. “Ei, espera terminar a troca antes de começar outra”
-
-// preload
-bannersLista.forEach(banner => {
-  const img = new Image();
-  img.src = banner.imagem;
-});
-
-/*O que acontece:
-- Cria imagens invisíveis na memória
-- Força o navegador a baixar tudo antes
-- Evita aquele efeito feio de “imagem piscando”
-📌 Sem isso:
-- Banner pode ficar branco
-- Transição fica feia */
-
-
-function renderBanner() {
-  if (emTransicao) return;
-  emTransicao = true;
-
-  const banner = bannersLista[indexAtual];
-  bannerImg.style.opacity = 0;
-
-  const novaImagem = new Image();
-  novaImagem.src = banner.imagem;
-
-  novaImagem.onload = () => {
-    bannerImg.src = banner.imagem;
-    bannerImg.style.opacity = 1;
-    body.style.backgroundColor = banner.corFundo;
-    emTransicao = false;
-  };
-}
-
-renderBanner();
-
-setInterval(() => {
-  indexAtual = (indexAtual + 1) % bannersLista.length;
-  renderBanner();
-}, 2000);
