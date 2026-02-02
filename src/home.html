@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini KaBum</title>
+    <title>Generic-Name</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/src/styles/reset.css">
     <link rel="stylesheet" href="/src/styles/layout.css">
     <link rel="stylesheet" href="/src/styles/components.css">
@@ -14,13 +17,15 @@
     <link rel="stylesheet" href="scripts/main.js">
     <script src="scripts/pages/home.js" type="module" defer></script>
     <script src="/src/scripts/services/cartServices.js" type="module" defer></script>
-    <script src="/src/scripts/services/bannerServices.js" type="module" defer></script>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+</style>
 </head>
 <body>
     <header>
         <div class="header-container">
             <div id="div-logo-kabum">
-                <img id="logo-kabum" src="/assets/images/logo/Logo-Kabum.png">
+                <img id="logo-kabum" src="/assets/images/logo/Generic-Name-Logo.png">
             </div>
                 <form>
                     <section class="grid-row-up">
@@ -50,26 +55,20 @@
                         <div id="items-header">
                             <img src="/assets/icons/support.png">
                             <img src="/assets/icons/ergonomic.png">
-                            <img src="/assets/icons/heart.png" style="width: 20px;">
+                            <img src="/assets/icons/coracao.webp" style="width: 20px;">
                             <img src="/assets/icons/shopping-cart.png" style="width: 22px;">
                         </div>
                     </section>
 
                     <section class="grid-row-down">
                         <div>
-                            <button id="departamentos" type="button">Departamentos<span>❮</span>
+                            <button id="departamentos" type="button">
+                                Departamentos <span>❮</span>
+                            </button>
                             <button id="cupons" type="button">Cupons</button>
                             <button id="mais-vendidos" type="button">Mais Vendidos</button>
                             <div id="botoes-normais">
-                                <a href="" id="hardware">Hardware</a>
-                                <a href="" id="liquidacao">Liquidação</a>
-                                <a href="" id="pc-gamer">PC Gamer</a>
-                                <a href="" id="computadores">Computadores</a>
-                                <a href="" id="perifericos">Periféricos</a>
-                                <a href="" id="escritorio">Escritório</a>
-                                <a href="" id="seja-prime">Seja Prime</a>
-                                <a href="" id="venda-kabum">Venda no KaBum!</a>
-                                <a href="" id="blog-kabum">blog KaBum</a>
+                                <a href="" id="blog-kabum">blog Generic Name</a>
                             </div>  
                         </div> 
                         <div style="width: 390px; margin-right: 20px ;">
@@ -81,18 +80,21 @@
     </header>
 
     <section class="vitrine-banners">
-        <div>
-            <img id="banner-inicial" alt="Banner principal" src="/assets/images/Banners/2.png">
+        <div class="allBanners">
+            <img id="banner1" src="/assets/images/Banners/banner3.webp" data-bg="#000000" alt="Banner">
+            <img id="banner2" src="/assets/images/Banners/banner2.webp" data-bg="#ffffff" alt="Banner">
+            <img id="banner3" src="/assets/images/Banners/banner1.webp" data-bg="#000000" alt="Banner">
+            <img id="banner4" src="/assets/images/Banners/banner4.webp" data-bg="#151515" alt="Banner">
         </div>
         <div id="botoes-banners-top">
-            <input id="botao-esquerda" type="button" value="❮">
-            <input id="botao-direita" type="button" value="❯">
+            <button id="botao-esquerda">❮</button>
+            <button id="botao-direita">❯</button> 
         </div>
     </section>
 
     <article class="artigo-central">
         <div id="feliz-level-novo">
-            <span>FELIZ LEVEL NOVO</span>
+            <span>PROMOÇÕES</span>
             <div style="display: flex; align-items: center;">
                 <span style="margin-right: 12px; font-size: 18px;">TERMINA EM:</span>
                 <img style="width: 25px; margin-right: 3px;" src="../assets/icons/Relogio.png">
