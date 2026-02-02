@@ -53,7 +53,7 @@ botaoEsquerda.addEventListener('click', () => {
   resetarAutoPlay();
 });
 
-atualizarSlide();|
+atualizarSlide();
 iniciarAutoPlay();
 
 /*-------------------  Função para pegar hora + contagem regressiva ------------------- */
