@@ -1,0 +1,63 @@
+Tecnologias que serão usadas:
+
+HTML5
+CSS3
+avaScript (ES Modules)
+localStorage (para simular persistência)
+API REST 
+Git / GitHub
+
+Fluxo mental correto:
+
+Ideia: “Quero um mini e-commerce”
+Requisitos: “Vai ter produto, carrinho, busca…”
+Arquitetura: “Vou separar data, services, pages…”
+
+✔️ Separação clara de responsabilidades:
+
+pages/ → lógica de páginas
+services/ → regras externas / API
+utils/ → funções reutilizáveis
+data/ → mock / dados locais
+styles/ → CSS organizado
+assets/ → imagens, ícones etc.
+
+REQUISITOS DO PROJETO:
+
+O sistema deve exibir uma lista de produtos na página inicial;
+Cada produto deve exibir imagem, nome e preço;
+O usuário deve poder adicionar produtos ao carrinho;
+O usuário deve visualizar os itens adicionados ao carrinho;
+O usuário deve remover itens do carrinho;
+O sistema deve calcular o valor total do carrinho;
+O usuário deve buscar produtos pelo nome;
+
+Requisitos Não Funcionais:
+
+O projeto será desenvolvido apenas em front-end;
+Não haverá autenticação de usuários;
+Os dados dos produtos serão mockados (JavaScript);
+O carrinho deve persistir usando localStorage;
+O código deve ser modularizado (ES Modules);
+O projeto deve funcionar nos navegadores modernos;
+
+mock de dados:
+
+id – identificador único
+nome – nome do produto
+preco – valor do produto
+imagem – caminho da imagem
+categoria – notebooks, periféricos, etc.
+descricao – detalhes resumidos
+
+Campo de busca:
+
+O campo de busca funciona filtrando a lista original de produtos. Nenhum produto é apagado —
+apenas exibimos os que correspondem à busca.
+
+Isso é feito usando o método filter() e comparando o texto digitado com o nome do produto.
+
+Conclusão:
+
+Sempre comece pensando nos dados antes de escrever a interface. Isso deixa o código mais
+organizado, facilita a busca, o filtro e prepara o projeto para crescer

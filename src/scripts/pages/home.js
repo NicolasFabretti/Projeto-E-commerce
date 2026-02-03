@@ -1,3 +1,49 @@
+/* ========================= CEP MODAL ========================= */
+const divCep = document.querySelector('#CEP');
+
+divCep.addEventListener('click', (e) => {
+  e.stopPropagation();
+
+  const modal = document.createElement('section');
+  const overlay = document.createElement('div');
+
+  overlay.innerHTML = `<div class="ponta-cep"></div>`;
+
+  modal.innerHTML = `
+    <div class="click-cep">
+      <span style="font-weight: 500;">
+        Informe onde quer receber suas compras
+        <hr>
+      </span>
+
+      <span style="margin:2px 0px 8px 0px;line-height: 1.2;">
+        Digite seu Cep para consultar os custos e prazos de <br>
+        entregas para sua região.
+      </span>
+
+      <div class="input-modal">
+        <input type="text" placeholder="Digite seu CEP*">
+        <button>OK</button>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+  document.body.appendChild(modal);
+
+  modal.addEventListener('click', e => e.stopPropagation());
+
+  function fecharModal() {
+    modal.remove();
+    overlay.remove();
+    window.removeEventListener('click', fecharModal);
+  }
+
+  setTimeout(() => {
+    window.addEventListener('click', fecharModal);
+  }, 0);
+});
+
 /*--------------------------- carrossel dos banners --------------------------- */
 const carrosselBanners = document.querySelector('.allBanners');
 const bannersImg = document.querySelectorAll('.allBanners img');
@@ -35,7 +81,7 @@ function prev() {
 let intervalo;
 
 function iniciarAutoPlay() {
-  intervalo = setInterval(next, 5000);
+  intervalo = setInterval(next, 3000);
 }
 
 function resetarAutoPlay() {
@@ -56,7 +102,7 @@ botaoEsquerda.addEventListener('click', () => {
 atualizarSlide();
 iniciarAutoPlay();
 
-/*-------------------  Função para pegar hora + contagem regressiva ------------------- */
+/* ========================= RELÓGIO ========================= */
 function iniciarRelogio() {
   const hora = document.querySelector('#hora');
   if (!hora) return;
@@ -84,26 +130,17 @@ function iniciarRelogio() {
 
 iniciarRelogio();
 
-
-
-/*--------------------------- carrossel dos produtos --------------------------- */
+/* ========================= CARROSSEL PRODUTOS ========================= */
 const grid = document.querySelector('.produtos-grid');
-const btnPrev2 = document.querySelector('#btn-prev');
-const btnNext2 = document.querySelector('#btn-next');
+const btnPrev = document.querySelector('#btn-prev');
+const btnNext = document.querySelector('#btn-next');
 
-const scrollAmount2 = 277 + 7; //Largura do card + gap
+const scrollAmount = 284;
 
-btnPrev2.addEventListener('click', () => {
-    grid.scrollBy({
-        left:-scrollAmount2,
-        behavior:"smooth"
-    });
+btnPrev.addEventListener('click', () => {
+  grid.scrollBy({ left: -scrollAmount, behavior: "smooth" });
 });
 
-btnNext2.addEventListener('click', () => {
-    grid.scrollBy({
-        left:scrollAmount2,
-        behavior:"smooth"
-    });
+btnNext.addEventListener('click', () => {
+  grid.scrollBy({ left: scrollAmount, behavior: "smooth" });
 });
-

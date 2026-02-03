@@ -1,13 +1,13 @@
 /*----------------------- COMEÇO DOS BOTOES DO CONTAINER TOP -----------------------*/
 
-/********************* Grid de cima do container da pesquisa **********************/
-
 /********************** Digite o CEP **********************/
 #CEP {
+    cursor: pointer;
     display: flex;
     gap: 5px;
     min-width: 130px;
     justify-content: center;
+    position: relative;
 }
 #CEP span {
     font-family: "kanit";
@@ -15,6 +15,61 @@
     font-size: 12px;
     line-height: 1.2; /* diminui o espaço entre as linhas */
     width: 150px;
+}
+.click-cep{
+    color:rgba(0, 0, 0, 0.874) ;
+    font-family: "kanit";
+    font-size: 13px;
+    font-weight: 300;
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 9998;
+    position: absolute;
+    padding:10px;
+    top: 70px;
+    left:160px;
+    background-color: #FFF;
+    border: 1px solid rgba(0, 0, 0, 0.406);
+    border-radius: 5px;
+}
+.click-cep hr {
+    margin: 4px 0px;
+    border: none;
+    border-top:1px solid rgba(0, 0, 0, 0.138);
+    height: 1px;
+    background-color: none;
+}
+.ponta-cep{
+    z-index: 9999;
+    position: absolute;
+    top: 65px;
+    left: 210px;
+    background-color: white;
+    width: 20px;
+    height: 20px;
+    transform:rotate(45deg);
+}
+.input-modal{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.input-modal input{
+    padding: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.386);
+    border-radius: 5px;
+    width: 230px;
+}
+.input-modal button{
+    font-family: "kanit";
+    font-weight: bold;
+    padding: 12px 15px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    background-color: #FF6500;
+    cursor: pointer;
 }
 
 
