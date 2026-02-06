@@ -1,4 +1,4 @@
-/* ========================= CEP MODAL ========================= */
+/* --------------------------- CEP MODAL --------------------------- */
 const divCep = document.querySelector('#CEP');
 
 divCep.addEventListener('click', (e) => {
@@ -22,8 +22,8 @@ divCep.addEventListener('click', (e) => {
       </span>
 
       <div class="input-modal">
-        <input type="text" placeholder="Digite seu CEP*">
-        <button>OK</button>
+        <input class="campo-cep" type="text" placeholder="Digite seu CEP*">
+        <button class="btnOk">OK</button>
       </div>
     </div>
   `;
@@ -42,7 +42,117 @@ divCep.addEventListener('click', (e) => {
   setTimeout(() => {
     window.addEventListener('click', fecharModal);
   }, 0);
+
+  var cep = modal.querySelector('.campo-cep')
+  var btnOk = modal.querySelector('.btnOk')
+  var alterarFrase = document.querySelector('.underline')
+
+async function buscarCep(valorCep){
+
+  const cepLimpo = valorCep.replace(/\D/g,'')
+
+  if(cepLimpo.length !== 8){
+    alert('CEP inválido')
+    return
+  }
+
+  try{
+    btnOk.textContent = 'Buscando...'
+    btnOk.disabled = true
+
+    const url = `https://viacep.com.br/ws/${cepLimpo}/json/`
+    const resposta = await fetch(url)
+    const data = await resposta.json()
+
+    if(data.erro){
+      alert('CEP não encontrado')
+      return
+    }
+
+    alterarFrase.textContent =
+    `${data.logradouro}, ${data.bairro}. ${data.localidade}/${data.uf}`
+
+    localStorage.setItem('cepUsuario', JSON.stringify(data))
+
+
+
+  }catch(error){
+    alert('Erro ao buscar CEP')
+  }finally{
+    btnOk.textContent = 'OK'
+    btnOk.disabled = false
+  }
+}
+
+alterarFrase.classList.add('frase-logradouro')
+
+btnOk.addEventListener('click', () => {
+  buscarCep(cep.value)
+})
 });
+
+function carregarEnderecoSalvo(){
+
+  const alterarFrase = document.querySelector('.underline')
+
+  if(!alterarFrase) return
+
+  const enderecoSalvo =
+    JSON.parse(localStorage.getItem('cepUsuario'))
+
+  if(enderecoSalvo){
+    alterarFrase.textContent =
+      `${enderecoSalvo.logradouro},
+       ${enderecoSalvo.bairro}.
+       ${enderecoSalvo.localidade}/${enderecoSalvo.uf}`
+
+    alterarFrase.classList.add('frase-logradouro')
+  }
+}
+carregarEnderecoSalvo()
+
+
+
+/*--------------------------- LOGIN ---------------------------*/
+
+  const divLogin = document.querySelector('#login')
+  const criarDropdown = document.createElement('section')
+
+  divLogin.addEventListener('click',() => {
+    document.body.appendChild(criarDropdown)
+    criarDropdown.innerHTML = `
+    <section class="dropDown">
+      <div>
+        <span>Acesse sua conta ou cadastre-se</span>
+      </div>
+
+      <div style="display:flex; justify-content: space-between; gap:10px; padding: 10px 0px 7px 0px;">
+        <input style="width:100%; padding: 10px; border-radius: 5px; border: 1px solid #000000a6" type="text" placeholder="E-mail ou CPF">
+
+        <button style="width:120px;padding:15px 10px; border-radius: 5px; border: none; color: #FFF; background-color: #a3a3a3; cursor:pointer; font-weight: bold";>ENTRAR</button>
+      </div>
+
+      <span>ou acessar com redes sociais</span>
+      <img style="width:700px;height:150px; margin: 10px auto;" src="/assets/images/Banners/banner retangular/SuperDescontos.webp"
+    </section>
+    `
+    criarDropdown.addEventListener('click', e => e.stopPropagation());
+    document.body.classList.add('modal-open')
+
+    
+    function fecharLogin() {
+      criarDropdown.remove();
+      window.removeEventListener('click', fecharLogin);
+      document.body.classList.remove('modal-open')
+    }
+
+    setTimeout(() => {
+      window.addEventListener('click', fecharLogin);
+    }, 0);
+  })
+
+
+
 
 /*--------------------------- carrossel dos banners --------------------------- */
 const carrosselBanners = document.querySelector('.allBanners');

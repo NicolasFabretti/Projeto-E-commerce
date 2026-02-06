@@ -71,6 +71,14 @@
     background-color: #FF6500;
     cursor: pointer;
 }
+.frase-logradouro{
+  max-width: 90px;   /* controla até onde vai */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+}
+
 
 
 
@@ -78,7 +86,6 @@
 #pesquisa {
     width: 100%;
     min-width: 300px;
-
 }
 #pesquisa input {
     width: 100%;
@@ -105,6 +112,7 @@
 
 /********************** Entre ou cadastre-se **********************/
 #login {
+    position: relative;
     display: flex;
     justify-content: center;
     gap: 7px;
@@ -112,6 +120,7 @@
     align-items: center;
     min-width: 120px;
     margin-right: 40px;
+    cursor: pointer;
     
 }
 #login span{
@@ -129,6 +138,27 @@
     text-decoration: underline;
     text-underline-offset: 1.5px; /* 👈 diminui a distância */
 }
+.dropDown{
+    font-family: "kanit"; 
+    border: 1px solid rgba(0, 0, 0, 0.363);
+    position: fixed;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    z-index: 9999;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+.dropDown span {
+    color: rgba(0, 0, 0, 0.692);
+}
+
 
 
 
@@ -230,7 +260,7 @@
     align-items: center;
     transform: translateY(-50%);
     padding: 0 20px;
-    z-index: 9999;
+    z-index: 9997;
 }
 #botao-direita,
 #botao-esquerda {
