@@ -1,3 +1,4 @@
+//LISTA DOS PAINEIS DE BANNERS DA PAG HOME
 export const listaBannersHome = [
     {
         imagemBanner: "../assets/images/Banners/banner1.webp",
