@@ -24,7 +24,7 @@
     display:flex;
     justify-content: center;
     flex-direction: column;
-    z-index: 9998;
+    z-index: 9999;
     position: absolute;
     padding:10px;
     top: 70px;
