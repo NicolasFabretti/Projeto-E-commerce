@@ -1,59 +1,79 @@
-/********* Função para criar cards *********/
-import { listaProdutos } from "../data/products.js";
+// Gerencia carrinho e curtidas via localStorage
+const CART_KEY = 'cart'
+const LIKES_KEY = 'likes'
 
-function criarCard(produto) {
-  const card = document.createElement("article");
-  card.classList.add("card-produto");
-  card.dataset.id = produto.id;
-  const parcela = Math.trunc((produto.preco / 10) * 100) / 100;
-  card.innerHTML = `
-    <a href="#" class="card-link">
-      <div class="div-img-produto">
-        <img src="${produto.imagem}" alt="${produto.nome}">
-      </div>
-  
-      <h3 class="produto-nome">${produto.nome}</h3>
-      <p class="valor-antigo">R$: ${produto.valorAntigo}</p>
-
-      <div class="preco">
-        <span class="preco-atual">
-          <strong>R$: ${produto.preco.toFixed(2)}</strong>
-        </span>
-      </div>
-
-      <p class="info-pagamento">
-        À vista no PIX <br>
-        ou até 10x de ${parcela.toFixed(2)}
-      </p>
-
-    </a>
-
-    <button class="btn-comprar" data-id="${produto.id}">
-      COMPRAR
-    </button>
-  `;
-
-  return card;
+export function getCart(){
+  const raw = localStorage.getItem(CART_KEY)
+  return raw ? JSON.parse(raw) : []
 }
 
-//Gerando o catalogo
-const container = document.getElementById("lista-produtos");
-listaProdutos.forEach(produto => {
-    container.appendChild(criarCard(produto));
-});
+export function saveCart(cart){
+    
+  localStorage.setItem(CART_KEY, JSON.stringify(cart))
+}
 
-//event delegation:
-container.addEventListener('click', (event) => {
-    //clique no botão comprar
-    if(event.target.classList.contains("btn-comprar")){
-        const id = event.target.dataset.id;
-        console.log("adicionar ao carrinho:", id);
-    }
+export function addToCart(id, qty = 1){
+  id = Number(id)
+  const cart = getCart()
+  const item = cart.find(i => i.id === id)
+  if(item) item.qty += qty
+  else cart.push({ id, qty })
+  saveCart(cart)
+  return cart
+}
 
-    //clique no card
-    const card = event.target.closest(".card-link");
-    if(card && !event.target.classList.contains("btn-comprar")) {
-        console.log("Abrir pagica no produto", id);
-    }
-});
+export function removeFromCart(id){
+  id = Number(id)
+  let cart = getCart()
+  cart = cart.filter(i => i.id !== id)
+  saveCart(cart)
+  return cart
+}
 
+export function changeQty(id, qty){
+  id = Number(id)
+  qty = Number(qty)
+  const cart = getCart()
+  const item = cart.find(i => i.id === id)
+  if(!item) return cart
+  item.qty = qty
+  if(item.qty <= 0) return removeFromCart(id)
+  saveCart(cart)
+  return cart
+}
+
+export function clearCart(){
+  saveCart([])
+}
+
+export function getLikes(){
+  const raw = localStorage.getItem(LIKES_KEY)
+  return raw ? JSON.parse(raw) : []
+}
+
+export function isLiked(id){
+  id = Number(id)
+  return getLikes().includes(id)
+}
+
+export function toggleLike(id){
+  id = Number(id)
+  const likes = getLikes()
+  const idx = likes.indexOf(id)
+  if(idx === -1){
+    likes.push(id)
+    localStorage.setItem(LIKES_KEY, JSON.stringify(likes))
+    return true
+  }
+  likes.splice(idx, 1)
+  localStorage.setItem(LIKES_KEY, JSON.stringify(likes))
+  return false
+}
+
+export function getCartDetails(listaProdutos){
+  const cart = getCart()
+  return cart.map(i => {
+    const p = listaProdutos.find(p => p.id === i.id)
+    return p ? { ...p, qty: i.qty } : null
+  }).filter(Boolean)
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Carrinho - Generic Name</title>
+  <link rel="stylesheet" href="/src/styles/Home/reset.css">
+  <link rel="stylesheet" href="/src/styles/Home/components.css">
+  <style>
+    .cart-item{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid #eee}
+    .cart-item img{width:80px}
+    .cart-actions{margin-left:auto;display:flex;gap:8px;align-items:center}
+  </style>
+</head>
+<body>
+  <main style="max-width:1000px;margin:24px auto;padding:0 16px">
+    <h1>Seu Carrinho</h1>
+    <div id="cart-list"></div>
+    <div id="cart-total" style="margin-top:16px;font-weight:bold"></div>
+    <p><a href="/home.html">Continuar comprando</a></p>
+  </main>
+  <script type="module" src="/src/pages/carrinho.js"></script>
+</body>
+</html>

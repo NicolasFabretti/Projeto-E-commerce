@@ -1,30 +1,66 @@
 export function iniciarCarrosselBanners(){
 
-  const carrossel = document.querySelector('.allBanners')
-  const imgs = document.querySelectorAll('.allBanners img')
-  const direita = document.querySelector('#botao-direita')
-  const esquerda = document.querySelector('#botao-esquerda')
+  //selecionando elementos.
+  const carrosselBanners = document.querySelector('.allBanners')
+  const bannersImg = document.querySelectorAll('.allBanners img')
+  const botaoDireita = document.querySelector('#botao-direita')
+  const botaoEsquerda = document.querySelector('#botao-esquerda')
 
-  if(!carrossel) return
+  //se forem falsos, cancela a função. Evita erro.
+  if(!carrosselBanners || !bannersImg.length) return
 
-  let index=0
+  //indice do slide atual.
+  let indexAtual = 0
 
-  function atualizar(){
-    carrossel.style.transform=`translateX(-${index*100}%)`
+  //total banners existentes.
+  const totalBanners = bannersImg.length
+
+  function atualizarSlide(){
+
+    // cria o loop do carrosel, e move ele para o lado.
+    carrosselBanners.style.transform = `translateX(-${indexAtual * 100}%)`
+
+    const bannerAtual = bannersImg[indexAtual]
+    const cor = bannerAtual.dataset.bg
+
+    if(cor){
+      document.body.style.backgroundColor = cor
+    }
   }
 
   function next(){
-    index=(index+1)%imgs.length
-    atualizar()
+    indexAtual = (indexAtual + 1) % totalBanners
+    atualizarSlide()
   }
 
   function prev(){
-    index=(index-1+imgs.length)%imgs.length
-    atualizar()
+    indexAtual = (indexAtual - 1 + totalBanners) % totalBanners
+    atualizarSlide()
   }
 
-  direita?.addEventListener('click',next)
-  esquerda?.addEventListener('click',prev)
+  let intervalo
 
-  setInterval(next,3000)
+  // AUTOPLAY
+  function iniciarAutoPlay(){
+    intervalo = setInterval(next,3000)
+  }
+
+  function resetarAutoPlay(){
+    clearInterval(intervalo)
+    iniciarAutoPlay()
+  }
+
+  // EVENTOS DOS BOTÕES
+  botaoDireita?.addEventListener('click',()=>{ //o ?, é optional chaining, se existir executa, se não, ignora.
+    next()
+    resetarAutoPlay()
+  })
+
+  botaoEsquerda?.addEventListener('click',()=>{
+    prev()
+    resetarAutoPlay()
+  })
+
+  atualizarSlide()
+  iniciarAutoPlay()
 }

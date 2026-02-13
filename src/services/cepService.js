@@ -17,3 +17,6 @@ export async function buscarCep(cep){
 
   return data
 }
+
+
+
