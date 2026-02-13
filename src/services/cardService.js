@@ -1,13 +1,17 @@
 /********* Função para criar cards *********/
 import { listaProdutos } from "../data/products.js";
 
-function criarCard(produto) {
+export function criarCard(produto) {
   const card = document.createElement("article");
   card.classList.add("card-produto");
   card.dataset.id = produto.id;
   const parcela = Math.trunc((produto.preco / 10) * 100) / 100;
   card.innerHTML = `
     <a href="#" class="card-link">
+      <div class="acoes-produto">
+        <button class="btn-curtir">❤</button>
+        <button class="btn-carrinho">🛒</button>
+      </div>
       <div class="div-img-produto">
         <img src="${produto.imagem}" alt="${produto.nome}">
       </div>
@@ -17,7 +21,7 @@ function criarCard(produto) {
 
       <div class="preco">
         <span class="preco-atual">
-          <strong>R$: ${produto.preco.toFixed(2)}</strong>
+          <strong>R$: ${produto.preco.toFixed(2)}</strong>      
         </span>
       </div>
 
@@ -32,28 +36,20 @@ function criarCard(produto) {
       COMPRAR
     </button>
   `;
+  
+  const acoesProduto = card.querySelector('.acoes-produto')
+  const acoesBotoes = acoesProduto.querySelectorAll('button')
+  // opcional: começar com os botões desabilitados    
+  acoesBotoes.forEach(b => b.disabled = true)
+
+  card.addEventListener('mouseenter', () => {
+    acoesBotoes.forEach(b => b.disabled = false)
+
+  })
+
+  card.addEventListener('mouseleave', () => {
+    acoesBotoes.forEach(b => b.disabled = true)
+  })
 
   return card;
 }
-
-//Gerando o catalogo
-const container = document.getElementById("lista-produtos");
-listaProdutos.forEach(produto => {
-    container.appendChild(criarCard(produto));
-});
-
-//event delegation:
-container.addEventListener('click', (event) => {
-    //clique no botão comprar
-    if(event.target.classList.contains("btn-comprar")){
-        const id = event.target.dataset.id;
-        console.log("adicionar ao carrinho:", id);
-    }
-
-    //clique no card
-    const card = event.target.closest(".card-link");
-    if(card && !event.target.classList.contains("btn-comprar")) {
-        console.log("Abrir pagica no produto", id);
-    }
-});
-

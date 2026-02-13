@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Curtidas - Generic Name</title>
+  <link rel="stylesheet" href="/src/styles/Home/reset.css">
+  <link rel="stylesheet" href="/src/styles/Home/components.css">
+  <style>
+    .like-item{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid #eee}
+    .like-item img{width:80px}
+    .like-actions{margin-left:auto;display:flex;gap:8px;align-items:center}
+    .btn-liked{color:crimson}
+  </style>
+</head>
+<body>
+  <main style="max-width:1000px;margin:24px auto;padding:0 16px">
+    <h1>Produtos Curtidos</h1>
+    <div id="likes-list"></div>
+    <p><a href="/home.html">Voltar à home</a></p>
+  </main>
+  <script type="module" src="/src/pages/curtidas.js"></script>
+</body>
+</html>

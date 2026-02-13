@@ -7,15 +7,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/src/styles/reset.css">
-    <link rel="stylesheet" href="/src/styles/layout.css">
-    <link rel="stylesheet" href="/src/styles/components.css">
-    <link rel="stylesheet" href="/src/styles/variables.css">
+    <link rel="stylesheet" href="/src/styles/Home/reset.css">
+    <link rel="stylesheet" href="/src/styles/Home/layout.css">
+    <link rel="stylesheet" href="/src/styles/Home/components.css">
+    <link rel="stylesheet" href="/src/styles/Home/variables.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <script src="src/js/pages/home.js" type="module" defer></script>
-    <script src="src/services/cartServices.js" type="module" defer></script>
+    <script type="module" src="src/main.js"></script>
     <style>@import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');</style>
 </head>
 <body>
@@ -50,10 +50,10 @@
                         </div>
 
                         <div id="items-header">
-                            <img src="/assets/icons/support.png">
-                            <img src="/assets/icons/ergonomic.png">
-                            <img src="/assets/icons/coracao.webp" style="width: 20px;">
-                            <img src="/assets/icons/shopping-cart.png" style="width: 22px;">
+                            <a href=""><img src="/assets/icons/support.png"></a>
+                            <a href=""><img src="/assets/icons/ergonomic.png"></a>
+                            <a href="pages/curtidas.html"><img src="/assets/icons/coracao.webp" style="width: 20px;"></a>
+                            <a href="pages/carrinho.html"><img src="/assets/icons/shopping-cart.png" style="width: 22px;"></a>
                         </div>
                     </section>
 
@@ -109,13 +109,97 @@
          
 
         <div class="banners-retangulares">
-            <div><img src="/assets/images/Banners/banner retangular/SuperDescontos.webp"></div>
-            <div><img src="/assets/images/Banners/banner retangular/SuperDescontos.webp"></div>
+            <a href=""><div><img src="/assets/images/Banners/banner retangular/SuperDescontos.webp"></div></a>
+            <a href=""><div><img src="/assets/images/Banners/banner retangular/SuperDescontos.webp"></div></a>
         </div>
+
+        <section class="vitrine-produtos">
+            <button id="btn-prev-2">‹</button>
+            <button id="btn-next-2">›</button>
+            <div class="produtos-grid" id="lista-produtos-2">
+                <!-- cards entram aqui via JS -->               
+            </div>
+        </section>
+
+        <div class="banner-monte-seu-pc">
+            <a href=""><img src="/assets/images/Banners/banner retangular/monteSeuPc.webp"></a>
+        </div>
+
+         <section class="vitrine-produtos">
+            <button id="btn-prev-3">‹</button>
+            <button id="btn-next-3">›</button>
+            <div class="produtos-grid" id="lista-produtos-3">
+                <!-- cards entram aqui via JS -->               
+            </div>
+        </section>
+        
     </article>
 
     <footer>
+        <div class="footer-receba-ofertas">
+            <span><strong>Generic Name News! </strong>Receba ofertas</span>
+            <input type="text" placeholder="Digite seu nome">
+            <input type="email" placeholder="Digite seu email">
+            <button>Cadastrar</button>
+        </div>
 
+        <div class="footer-inf">
+            <div>
+                <h4>Atendimento</h4>
+
+                <span>08:00 às 20:00 - Segunda a<br>
+                Sexta;<br> 09:00 às 15:00 - Sábado,<br>
+                horário de Brasília (exceto Domingos e feriados).</span>
+
+                <p><button>Fale Conosco</button></p>
+            </div>
+            <div>
+                <h4>Vendas Pessoa Jurídica</h4>
+
+                <span>08:00 às 20:00 - Segunda a Sexta;<br>
+                09:00 às 15:00 - Sábado,<br>horário de Brasília
+                (exceto Domingos e feriados).</span>
+
+                <p>Fale conosco via <u><strong>chat</strong></u> ou<br>
+                pelo email:<br>
+                genericname@gmail.com</p>
+            </div>
+            <div>
+                <h4>Loja Física</h4>
+                <p><strong>loja 1: </strong>Lorem ipsum dolor sit amet
+                consectetur adipisicing elit. Cumque, repudiandae.</p>
+                
+                <p>09:00 às 22:00 - Segunda a Sábado;<br>
+                12:00 às 20:00 - Domingos e feriados.</p>
+
+                <p><strong>Loja 2: </strong>Lorem ipsum dolor sit amet
+                consectetur adipisicing elit. Numquam, iste?</p>
+
+                <p>09:00 às 22:00 - Segunda a Sábado;<br>
+                12:00 às 20:00 - Domingos e feriados.</p>
+            </div>
+
+            <div class="institucional">
+                <h4>Institucional</h4>
+                <section>
+                    <div>
+                        <p><a href="">Sobre o Generic Name!</a></p>
+                        <p><a href="">Blog Generic Name!</a></p>
+                        <p><a href="">Políticas de privacidade</a></p>
+                        <p><a href="">Política de Cookies</a></p>
+                        <p><a href="">Código de conduta e<br>
+                        ética de fornecadores</a></p>
+                    </div>
+                    <div>
+                        <p><a href="">Política de Cookies</a></p>
+                        <p><a href="">Código de defesa do consumidor</a></p>
+                        <p><a href="">Segurança e Privacidade</a></p>
+                        <p><a href="">Acessibilidade</a></p>
+                        <p><a href="">Trabalhe Conosco</a></p>
+                    </div>
+                </section>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
